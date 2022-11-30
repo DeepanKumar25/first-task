@@ -5,10 +5,10 @@ const {assert,expect} = require("chai");
 describe("working",function(){
   async function deploy(){
     const [deployer] = await ethers.getSigners()
-    const tokencontract = await ethers.getContractFactory("token")
+    const tokencontract = await ethers.getContractFactory("Token")
     const token = await tokencontract.deploy()
     await token.deployed()
-    const nftcontract = await ethers.getContractFactory("nft")
+    const nftcontract = await ethers.getContractFactory("Nft")
     const nft = await nftcontract.deploy(token.address)
     await nft.deployed()
     const approve = await token.approve(nft.address,token.totalSupply())
